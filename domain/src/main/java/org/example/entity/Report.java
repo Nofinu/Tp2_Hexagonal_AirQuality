@@ -12,6 +12,9 @@ public class Report {
     private Pollution pollution;
     private String comment;
 
+    public Report() {
+    }
+
     public Report(double longitude, double latitude, Date dateAndHours, int pollution, String comment) {
         this.longitude = longitude;
         this.latitude = latitude;

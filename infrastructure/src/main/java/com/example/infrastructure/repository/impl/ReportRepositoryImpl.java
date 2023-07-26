@@ -14,16 +14,22 @@ import java.util.Optional;
 
 @Repository
 public class ReportRepositoryImpl implements ReportRepository {
-    @Autowired
+
     private ReportEntityRepository reportEntityRepository;
 
-    @Autowired
+
     private ModelMapper modelMapper;
 
+    public ReportRepositoryImpl(ReportEntityRepository reportEntityRepository) {
+        this.reportEntityRepository = reportEntityRepository;
+        modelMapper = new ModelMapper();
+    }
+
     @Override
-    public void save(Report report) {
+    public Report save(Report report) {
         ReportEntity reportEntity = modelMapper.map(report,ReportEntity.class);
-        reportEntityRepository.save(reportEntity);
+        ReportEntity reportSave = reportEntityRepository.save(reportEntity);
+        return modelMapper.map(reportSave,Report.class);
     }
 
     @Override
