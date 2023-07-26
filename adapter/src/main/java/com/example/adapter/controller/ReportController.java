@@ -4,6 +4,7 @@ import com.example.adapter.dto.ReportCreateDto;
 import org.example.entity.Report;
 import org.example.exception.DateFormatNotFitException;
 import org.example.exception.InputOutOfRangeException;
+import org.example.service.ReportService;
 import org.example.service.impl.ReportServiceImpl;
 import org.example.spi.port.ReportRepository;
 import org.springframework.http.HttpStatus;
@@ -15,10 +16,11 @@ import java.util.List;
 @RestController
 @RequestMapping("api/report")
 public class ReportController {
-    private final ReportServiceImpl reportService;
 
-    public ReportController(ReportRepository reportRepository) {
-        reportService = new ReportServiceImpl(reportRepository);
+    private final ReportService reportService;
+
+    public ReportController(ReportService reportService){
+        this.reportService = reportService;
     }
 
     @GetMapping("")

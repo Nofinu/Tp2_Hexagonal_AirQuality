@@ -2,6 +2,9 @@ package org.example;
 
 import com.example.infrastructure.repository.ReportEntityRepository;
 import com.example.infrastructure.repository.impl.ReportRepositoryImpl;
+import com.example.infrastructure.repository.impl.UserRepositoryImpl;
+import org.example.service.impl.ReportServiceImpl;
+import org.example.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.beans.factory.support.GenericBeanDefinition;
 import org.springframework.context.ApplicationContextInitializer;
@@ -20,9 +23,8 @@ public class FirstAppInitializer implements ApplicationContextInitializer {
     @Override
     public void initialize(ConfigurableApplicationContext applicationContext) {
         ConfigurableListableBeanFactory registry = applicationContext.getBeanFactory();
-        GenericBeanDefinition beanDefinition = new GenericBeanDefinition();
-        beanDefinition.setBeanClass(ReportRepositoryImpl.class);
-        registry.registerSingleton("ReportRepository",new ReportRepositoryImpl(applicationContextInfrastructure.getBean(ReportEntityRepository.class)));
+        registry.registerSingleton("ReportService",new ReportServiceImpl(applicationContextInfrastructure.getBean(ReportRepositoryImpl.class)));
+        registry.registerSingleton("UserService",new UserServiceImpl(applicationContextInfrastructure.getBean(UserRepositoryImpl.class)));
 
     }
 }
