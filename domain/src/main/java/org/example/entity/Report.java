@@ -23,6 +23,15 @@ public class Report {
         this.comment = comment;
     }
 
+    public Report(int id, double longitude, double latitude, Date dateAndHours, int pollution, String comment) {
+        this.id = id;
+        this.longitude = longitude;
+        this.latitude = latitude;
+        this.dateAndHours = dateAndHours;
+        this.pollution = pollution == 1 ? Pollution.FAIBLE : pollution == 2 ? Pollution.MODERER : Pollution.DANGEREUX;
+        this.comment = comment;
+    }
+
     public Report(int id, double longitude, double latitude, Date dateAndHours, Pollution pollution, String comment) {
         this.id = id;
         this.longitude = longitude;
@@ -44,7 +53,7 @@ public class Report {
         return longitude;
     }
 
-    public void setLongitude(long longitude) {
+    public void setLongitude(double longitude) {
         this.longitude = longitude;
     }
 
@@ -52,7 +61,7 @@ public class Report {
         return latitude;
     }
 
-    public void setLatitude(long latitude) {
+    public void setLatitude(double latitude) {
         this.latitude = latitude;
     }
 
@@ -66,6 +75,10 @@ public class Report {
 
     public Pollution getPollution() {
         return pollution;
+    }
+
+    public void setPollutionByInt(int pollution) {
+        this.pollution = pollution == 1 ? Pollution.FAIBLE : pollution == 2 ? Pollution.MODERER : Pollution.DANGEREUX;
     }
 
     public void setPollution(Pollution pollution) {

@@ -33,6 +33,13 @@ public class ReportRepositoryImpl implements ReportRepository {
     }
 
     @Override
+    public Boolean delete(Report report) {
+        ReportEntity reportEntity = modelMapper.map(report,ReportEntity.class);
+        reportEntityRepository.delete(reportEntity);
+        return true;
+    }
+
+    @Override
     public Report findById(int id) {
         Optional<ReportEntity> reportEntity = reportEntityRepository.findById(id);
         if(reportEntity.isPresent()){
@@ -47,6 +54,25 @@ public class ReportRepositoryImpl implements ReportRepository {
         reportEntityRepository.findAll().forEach(r -> {
             reports.add(modelMapper.map(r,Report.class));
         });
+        return reports;
+    }
+
+    @Override
+    public List<Report> findByLocation(double longitude, double latitude) {
+        List<Report> reports = new ArrayList<>();
+        reportEntityRepository.findByLatitudeBetweenAndLongitudeBetween(latitude-0.1,latitude+0.1,longitude-0.1,longitude+0.1)
+                .forEach(r -> {
+                    reports.add(modelMapper.map(r,Report.class));
+                });
+        return reports;
+    }
+
+    @Override
+    public List<Report> findLatest() {
+        List<Report> reports = new ArrayList<>();
+        reportEntityRepository.findOrderByDate().forEach(r -> {
+                    reports.add(modelMapper.map(r,Report.class));
+                });
         return reports;
     }
 }

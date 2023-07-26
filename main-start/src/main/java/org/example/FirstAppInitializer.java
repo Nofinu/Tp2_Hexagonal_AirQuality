@@ -3,7 +3,6 @@ package org.example;
 import com.example.infrastructure.repository.ReportEntityRepository;
 import com.example.infrastructure.repository.impl.ReportRepositoryImpl;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
-import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.beans.factory.support.GenericBeanDefinition;
 import org.springframework.context.ApplicationContextInitializer;
 import org.springframework.context.ConfigurableApplicationContext;
