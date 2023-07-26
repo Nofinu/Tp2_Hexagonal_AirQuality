@@ -1,4 +1,4 @@
-package org.example.service;
+package org.example.spi.adapter;
 
 import org.example.entity.User;
 

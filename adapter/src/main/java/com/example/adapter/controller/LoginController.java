@@ -1,10 +1,10 @@
 package com.example.adapter.controller;
 
-import org.example.service.ReportService;
-import org.example.service.UserService;
-import org.example.service.impl.UserServiceImpl;
-import org.example.spi.port.UserRepository;
+import com.example.adapter.dto.UserCreateDto;
+import org.example.spi.adapter.UserService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,5 +19,7 @@ public class LoginController {
     }
 
     @PostMapping("/register")
-    public Re
+    public ResponseEntity<String> register (@RequestBody UserCreateDto userCreateDto){
+
+    }
 }

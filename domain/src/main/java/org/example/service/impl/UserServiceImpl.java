@@ -1,7 +1,7 @@
 package org.example.service.impl;
 
 import org.example.entity.User;
-import org.example.service.UserService;
+import org.example.spi.adapter.UserService;
 import org.example.spi.port.UserRepository;
 
 public class UserServiceImpl implements UserService {

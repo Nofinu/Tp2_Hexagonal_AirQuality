@@ -24,7 +24,7 @@ public class FirstAppInitializer implements ApplicationContextInitializer {
     public void initialize(ConfigurableApplicationContext applicationContext) {
         ConfigurableListableBeanFactory registry = applicationContext.getBeanFactory();
         registry.registerSingleton("ReportService",new ReportServiceImpl(applicationContextInfrastructure.getBean(ReportRepositoryImpl.class)));
-        registry.registerSingleton("UserService",new UserServiceImpl(applicationContextInfrastructure.getBean(UserRepositoryImpl.class)));
+        registry.registerSingleton("UserRepository",new UserServiceImpl(applicationContextInfrastructure.getBean(UserRepositoryImpl.class)));
 
     }
 }
